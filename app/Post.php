@@ -10,7 +10,9 @@ class Post extends Model
 {
 
     use SoftDeletes;
-
+    protected $dates = [
+        'created_at'
+    ];
     protected $fillable = [
         'title','description','content','image','published_at','category_id','user_id',
     ];
@@ -32,5 +34,18 @@ class Post extends Model
      }
      public function replies(){
         return $this->hasMany(Reply::class);
+    }
+    public function scopePublished($query){
+        return $query->where('created_at','<=',now());
+    }
+    public function scopeSearched($query){
+
+        $search = request()->query('search');
+        if (!$search) {
+            return $query->published();
+            // ->published();
+        }
+        return $query->published()->where('title','LIKE',"%{$search}%");
+    
     }
 }

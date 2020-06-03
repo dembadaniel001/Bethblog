@@ -130,6 +130,13 @@
                             <li class="list-group-item">
                             <a href="{{route('categories.index')}}">Categories</a>
                             </li>
+                            @if (auth()->user()->isAdmin())
+                            <li class="list-group-item">
+                            <a href="{{route('users.index')}}">
+                                    About the blog
+                                </a>
+                            </li>
+                            @endif
                         </ul>
                         <ul class="list-group my-5">
                             <li class="list-group-item">

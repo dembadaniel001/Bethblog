@@ -30,11 +30,11 @@ class UsersController extends Controller
 
     public function update(UpdateProfileRequest $request){
         $user = auth()->user();
-        
+
         $user->update([
             'name' => $request->name,
             'about' => $request->about,
-            
+
         ]);
 
         session()->flash('success','Profile updated successfully');
@@ -50,6 +50,15 @@ class UsersController extends Controller
         $user->save();
 
         session()->flash('success','User successfully made Admin');
+
+        return redirect(route('users.index'));
+    }
+    public function removeAdmin(User $user){
+        $user->role = 'reader';
+
+        $user->save();
+
+        session()->flash('success','User successfully removed as Admin');
 
         return redirect(route('users.index'));
     }

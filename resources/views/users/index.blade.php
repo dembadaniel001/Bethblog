@@ -38,6 +38,16 @@
                         </button>
                         </form>
                         @endif
+                        @if ($user->isAdmin())
+                        <form action="{{route('users.remove',$user->id)}}" method="POST">
+                            @csrf
+    
+    
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Remove Admin
+                            </button>
+                        </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

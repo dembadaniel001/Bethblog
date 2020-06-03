@@ -43,10 +43,10 @@
               <div class="container">
                 {!! $post->content !!}
                <br><br>
-                <div class="addthis_inline_share_toolbox_rrj4">
+                <div class="addthis_inline_share_toolbox">
                 <p> <strong>Share post on</strong></p>  
                 </div>
-
+                {{-- <div class="addthis_inline_share_toolbox"></div> --}}
                 {{-- <div class="row">
                   <div class="col-lg-8 mx-auto">
 

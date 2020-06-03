@@ -13,18 +13,20 @@ use App\Http\Controllers\Blog\PostsController;
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Route::get('blog/posts/{post}', [PostsController::class, 'show'])->name('blog.show');
-Route::get('users/notifications', [UsersController::class, 'notifications']);
-
+Route::get('blog/categories/{category}', [PostsController::class, 'category'])->name('blog.category');
 Route::resource('blog/posts/{post}/replies', 'RepliesController');
 
 Auth::routes(['verify' => true]);
 
 
 
-Route::middleware(['auth'])->group(function () {
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('users/notifications', [UsersController::class, 'notifications']);
 
     Route::get('/home', 'HomeController@index')->name('home');
 
@@ -37,12 +39,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('restore-post/{post}', 'PostsController@restore')->name('restore-posts');
 
     Route::get('users/notifications', 'UsersController@notifications')->name('users.notifications');
-});
 
-Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('user/profile', 'UsersController@edit')->name('users.edit-profile');
     Route::put('user/profile', 'UsersController@update')->name('users.update-profile');
     Route::get('users', 'UsersController@index')->name('users.index');
     Route::post('users/{user}/make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
+    Route::post('users/{user}/remove', 'UsersController@removeAdmin')->name('users.remove');
 });
-

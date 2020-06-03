@@ -29,25 +29,28 @@
       <div class="container">
 
         <div class="navbar-left">
-          <button class="navbar-toggler" type="button">&#9776;</button>
+          {{-- <button class="navbar-toggler" type="button">&#9776;</button> --}}
           <a class="navbar-brand" href="/">
           <img class="logo-dark" src="{{asset('img/logo-dark.png')}}" alt="logo">
           <img class="logo-light" src="{{asset('img/logo-light.png')}}" alt="logo">
           </a>
         </div>
 
-        <section class="navbar-mobile">
+        {{-- <section class="navbar-mobile">
           <span class="navbar-divider d-mobile-none"></span>
 
           <ul class="nav nav-navbar">
-         
+            <li><a href="">About The blog</a></li>
+            <li><a href="">About me</a></li>
+            <li><a href="">Contacts</a></li>
+        
           </ul>
-        </section>
+        </section> --}}
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
           @if (Auth::guest())
-          <a class="btn btn-xs btn-round btn-success mb-2" href="{{route('login')}}">Login</a>
-          <a class="btn btn-xs btn-round btn-success" href="{{route('register')}}">Register</a>
+          <a class="btn btn-xs btn-round btn-success my-1" href="{{route('login')}}">Login</a>
+          <a class="btn btn-xs btn-round btn-success my-1" href="{{route('register')}}">Register</a>
           @else
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -122,7 +125,7 @@
     <!-- Scripts -->
 <script src="{{asset('js/page.min.js')}}"></script>
 <script src="{{asset('js/script.js')}}"></script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ea00d6781b82230"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ed752495b0011dd"></script>
 @yield('scripts')
 
   </body>
