@@ -13,13 +13,23 @@ class UsersController extends Controller
         // mark as read
         auth()->user()->unreadNotifications->markAsRead();
         //display all notifications
-        return view('users.notifications',[
-            'notifications' => auth()->user()->notifications()->paginate(5),
+        return view('users.notifications',['notifications' => auth()->user()->notifications()->paginate(15),
         ]);
     }
 
     public function index(){
-        return view('users.index')->with('users',User::all());
+        $search = request()->query('search');
+
+        if ($search) {
+            $users = User::where('email','LIKE',"%{$search}%")->simplepaginate(20);
+        }
+        else {
+            $users = User::simplepaginate(20);
+        }
+
+
+        return view('users.index')
+        ->with('users',$users);
     }
 
 

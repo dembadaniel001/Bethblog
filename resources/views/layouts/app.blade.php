@@ -23,6 +23,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{asset('css/page.min.css')}}" rel="stylesheet"> --}}
+    {{-- <link href="{{asset('css/style.css')}}" rel="stylesheet"> --}}
     @yield('css')
 </head>
 <body>
@@ -103,7 +105,7 @@
 
         <main class="py-4">
             @auth
-            <div class="container">
+            <div class="container my-50">
                 @if (session()->has('success'))
                 <div class="alert alert-success">
                     {{session()->get('success')}}

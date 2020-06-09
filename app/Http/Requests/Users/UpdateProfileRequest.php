@@ -26,7 +26,7 @@ class UpdateProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'about' => 'required',
-            
+            'image' => 'required|image',
         ];
     }
 }

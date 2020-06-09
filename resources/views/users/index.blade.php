@@ -2,9 +2,19 @@
 
 @section('content')
 <div class="card card-default">
-    <div class="card-header">
-        Subscribers
+    <div class="card-header justify-contents-between">
+
+        <strong>Subscribers</strong>
+
+    <form class="input-group" action="{{route('users.index')}}" method="GET">
+        <input type="text" class="form-control" name="search" placeholder="Search Users" value="{{ request()->query('search') }}">
+            {{-- <div class="input-group-addon">
+              <span class="input-group-text"><i class="ti-search"></i></span>
+            </div> --}}
+            <button type="submit" class="btn btn-info btn-sm">Search</button>
+          </form>
     </div>
+  
     <div class="card-body">
         @if ($users->count() > 0)
         <table class="table">
@@ -58,6 +68,8 @@
                 No Users yet
             </h3>
         @endif
+        {{ $users->appends(['search' => request()->query('search') ])->links() }}
+
     </div>
 </div>
 @endsection

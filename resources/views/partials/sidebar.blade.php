@@ -43,24 +43,7 @@
 
       <hr>
 
-      <div class="col-6 col-lg-3 text-right order-lg-last">
-        <h6 class="sidebar-title">Contacts</h6>
-        <div class="social">
-        <a class="social-facebook" target="_blank" href=""><i class="fa fa-facebook"></i></a>
-        <a class="social-twitter" target="_blank" href=""><i class="fa fa-twitter"></i></a>
-        <a class="social-instagram" target="_blank" href=""><i class="fa fa-instagram"></i></a>
-          <a class="social-dribbble" target="_blank" href="#"><i class="fa fa-dribbble"></i></a>
-        </div>
-      </div>
-
-      <hr>
-
       <h6 class="sidebar-title">About The Blog</h6>
-      <p class="small-3"></p>
-
-      <hr>
-
-      <h6 class="sidebar-title">About Me</h6>
       <p class="small-3"></p>
 
       <hr>
