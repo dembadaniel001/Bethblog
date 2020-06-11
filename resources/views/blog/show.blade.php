@@ -82,7 +82,7 @@
                         <strong>Comments</strong>
                       </div>
                       <div class="card-body">
-                        @foreach ($post->replies()->paginate(3) as $reply)
+                        @foreach ($post->replies()->paginate(8) as $reply)
                             <div class="card my-5">
                               <div class="card-header">
                                 <div class="d-flex justify-content-between">
@@ -98,7 +98,7 @@
                               </div>
                             </div>
                         @endforeach
-                        {{$post->replies()->paginate(3)->links() }}
+                        {{$post->replies()->paginate(8)->links() }}
                       @auth
 
                          <form action="{{route('replies.store',$post->id)}}" method="POST">

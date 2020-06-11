@@ -10,6 +10,7 @@ use App\Notifications\NewReplyAdded;
 
 class RepliesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

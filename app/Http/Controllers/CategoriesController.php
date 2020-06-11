@@ -9,6 +9,7 @@ use App\Http\Requests\Categories\UpdateCategoryRequest;
 
 class CategoriesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

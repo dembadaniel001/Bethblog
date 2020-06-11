@@ -7,6 +7,9 @@ use App\Http\Requests\Posts\CreatePostRequest;
 use App\Http\Requests\Posts\UpdatePostRequest;
 use App\Post;
 use App\Category;
+use App\User;
+use App\Notifications\NewPostAdded;
+
 // use App\Middleware\VerifyCategoriesCount;
 
 class PostsController extends Controller
@@ -16,6 +19,7 @@ class PostsController extends Controller
     {
         $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
         $this->middleware('verified')->only(['create', 'store']);
+
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +39,7 @@ class PostsController extends Controller
     public function create()
     {
         return view('posts.create')->with('categories', Category::all());
+
     }
 
     /**
@@ -43,7 +48,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreatePostRequest $request)
+    public function store(CreatePostRequest $request,Post $post)
     {
         //upload image
         $image = $request->image->store('posts');
@@ -59,6 +64,7 @@ class PostsController extends Controller
             'user_id' => auth()->user()->id,
 
         ]);
+        // User::all()->notify(new NewPostAdded($post));
 
         //flash message
         session()->flash('success', 'Post created successfully');
